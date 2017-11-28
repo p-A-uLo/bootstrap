@@ -37,6 +37,7 @@ const Tooltip = (($) => {
     selector            : '(string|boolean)',
     placement           : '(string|function)',
     offset              : '(number|string)',
+    boundariesElement   : '(string|element)',
     container           : '(string|element|boolean)',
     fallbackPlacement   : '(string|array)'
   }
@@ -61,6 +62,7 @@ const Tooltip = (($) => {
     selector            : false,
     placement           : 'top',
     offset              : 0,
+    boundariesElement   : 'scrollParent',
     container           : false,
     fallbackPlacement   : 'flip'
   }
@@ -295,6 +297,9 @@ const Tooltip = (($) => {
           modifiers: {
             offset: {
               offset: this.config.offset
+            },
+            preventOverflow: {
+              boundariesElement: this.config.boundariesElement
             },
             flip: {
               behavior: this.config.fallbackPlacement
